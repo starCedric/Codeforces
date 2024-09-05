@@ -1,0 +1,44 @@
+// problem : https://www.codechef.com/START150D/problems/ARRAYSTATE
+
+// solution : 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+
+	int t;
+	cin >> t;
+	
+	while(t--){
+	    
+	    int n, k;
+	    cin >> n >> k;
+	    
+	    vector<int> arr(n);
+	    
+	    for(int i = 0; i < n; i++){
+	        cin >> arr[i];
+	    }
+	    
+	    for(int i = 0; i < k; i++){
+	        
+	        int mini = arr[0];
+	        int maxi = arr[n - 1];
+	        int newi = maxi + mini;
+	        
+	        arr.erase(arr.begin());
+	        arr.pop_back();
+	        
+	        arr.push_back(newi);
+	        n--;
+	    }
+	    
+	    for(int it : arr){
+	        cout << it << " ";
+	    }
+	    cout << endl;
+	}
+	
+	return 0;
+}
