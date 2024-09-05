@@ -1,0 +1,89 @@
+// problem : https://www.codechef.com/START150D/problems/RATIO2
+
+// solution : 
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    
+    int t; cin >> t;
+    
+    while(t--){
+        
+        int x,y;
+        cin >> x >> y;
+        
+        int count = 0;
+        
+        if(x >= y){
+            
+            int modify = 0;
+            int x_diff = (x * 2) - x;
+            int y_diff = y - (y / 2);
+            
+            if(x_diff > y_diff){
+                while(x < (2 * y)){
+                    y--;
+                    modify++;
+                }
+            }
+            
+            else if(x_diff < y_diff){
+                while(x < (2 * y)){
+                    x++;
+                    modify++;
+                }
+            }
+            
+            else {
+                while(x < (2 * y)){
+                    if(modify % 2 == 0){
+                        x ++;
+                    }
+                    else y--;
+                    modify++;
+                }
+            }
+            
+            count = modify;
+        }
+        
+        else{
+            
+            int modify = 0;
+            int x_diff = x - (x / 2);
+            int y_diff = (y * 2) - y;
+            
+            if(x_diff > y_diff){
+                while(y < (2 * x)){
+                    y++;
+                    modify++;
+                }
+            }
+            
+            else if(x_diff < y_diff){
+                while(y < (2 * x)){
+                    x--;
+                    modify++;
+                }
+            }
+            
+            else {
+                while(y < (2 * x)){
+                    if(modify % 2 == 0){
+                        y++;
+                    }
+                    else x--;
+                    modify++;
+                }
+            }
+            
+            count = modify;
+        }
+        
+        cout << count << endl;
+    }
+    
+    return 0;
+}
